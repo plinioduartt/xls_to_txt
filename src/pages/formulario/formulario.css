@@ -1,0 +1,113 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #09d3ac;
+}
+
+
+a#downloadlink {
+    background: #09d3ac;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    position: absolute;
+    margin-top: 175px;
+    width: 150px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+a#downloadlink.active {
+    display: block !important;
+    transition: '2s';
+}
+
+a#downloadlink.disabled {
+    display: none !important;
+    transition: '2s';
+}
+
+a#downloadlink:hover {
+    background: #fff;
+    color: #09d3ac;
+    border: none;
+}
+
+input.upload-file {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 15px;
+    display: none;
+}
+
+label.custom-file-upload {
+    display: flex;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+label.custom-file-upload img {
+    width: 35px;
+    margin-right: 10px;
+}
+
+img#loader {
+    width: 60px;
+    position: absolute;
+    margin-top: 125px;
+}
+
+img#loader.active {
+    display: block !important;
+}
+
+img#loader.disabled {
+    display: none !important;
+}
+
+div#avatar {
+    position: absolute;
+    right: 30px;
+    margin-top: 40px;
+    display: flex;
+}
+
+div#avatar img {
+    width: 60px;
+    border-radius: 50px;
+    margin-right: 13px;
+}
+
+div#avatar p {
+    line-height: 23px;
+    font-size: 17px;
+    color: #fff;
+}
+
+p#desenvolvido-por {
+    position: absolute;
+    right: 30px;
+    color: #09d3ac;
+    font-size: 12px;
+    top: 31px;
+}
