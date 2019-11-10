@@ -91,13 +91,13 @@ export default class Formulario extends Component {
             <div className="App">
                 <p id="desenvolvido-por">Desenvolvido por</p>
                 <div id="avatar">
-                    <img alt="" src={ McLovin } />
-                    <p>@pj_duarte</p>
+                    {/* <img alt="" src={ McLovin } /> */}
+                    <p>@mk3</p>
                 </div>
 
                 <div className="App-header">
                     <p className="App-link">Upload da planilha (XLSX)</p>
-                    <label for="file-upload" class="custom-file-upload">
+                    <label for="file-upload" className="custom-file-upload">
                         <img alt="" src={ upload_image } />
                         { this.state.selected ? this.state.file.name : 'Nenhum arquivo selecionado' }
                     </label>
