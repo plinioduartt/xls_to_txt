@@ -7,8 +7,8 @@ import './formulario.css';
 import upload_image from './../../assets/upload.png';
 import CREATE_LINE from './CREATE_LINE';
 
-var string =             '000JADLOG LOGISTICA S.A                                                                                                                                                                                                                                   \n';
-var second_line_string = '                                                                                                                                                                                                                                                          \n';
+var string =             '000JADLOG LOGISTICA S.A               ELSYS EQUIPAMENTOS ELETRONICOS LTDA0101190000OCO502000000                                                                                                                                                           \n';
+var second_line_string = '540OCORR502000000                                                                                                                                                                                                                                         \n';
 var thirdy_line_string = '54104884082000135JADLOG LOGISTICA S.A                                                                                                                                                                                                                     \n'
 
 string = `${ string }${ second_line_string }${ thirdy_line_string }`;
@@ -47,10 +47,10 @@ export default class Formulario extends Component {
                 delete dataParse[dataParse.length-1];
                 delete dataParse[dataParse.length-2];
     
-                console.log(dataParse)
                 await dataParse.forEach( async (item, index) => {
                     let line = await CREATE_LINE.create(item)
                     string = `${ string }${ line }`;
+
                     if (index === (dataParse.length - 3)) {
                         await this.create_txt_file(string);
                         setTimeout( async () => {
@@ -72,16 +72,19 @@ export default class Formulario extends Component {
             if (textFile !== null) {
                 window.URL.revokeObjectURL(textFile);
             }
-        
+            
             textFile = window.URL.createObjectURL(data);
-        
+            
             return textFile;
         };
     
         setTimeout(() => {
             var link = document.getElementById('downloadlink');
+            text = text + '549                                                                                                                                                                                                                                                        \n';
             link.href = makeTextFile(text);
             link.style.display = 'block';
+            string = '000JADLOG LOGISTICA S.A               ELSYS EQUIPAMENTOS ELETRONICOS LTDA0101190000OCO502000000                                                                                                                                                           \n';
+            string = `${ string }${ second_line_string }${ thirdy_line_string }`;
         }, 3000);
       
     }
