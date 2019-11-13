@@ -16,22 +16,24 @@ module.exports = {
         var hours;
         var DACTE;
 
+        // console.log(item.NOTAFISCAL, item.DATA_EVENTO, item.CNPJ, item.DACTE)
+
         return new Promise( async (resolve) => {
-            if (item[16] === "ENTREGUE") {  // Cria a linha só se o status for igual a ENTREGUE
-                cnpj = item[31];
-                nfs = await item[13].includes('/') ? 
-                item[13].split('/') :
-                [item[13]];
+            if (item.STATUS === "ENTREGUE") {  // Cria a linha só se o status for igual a ENTREGUE
+                cnpj = item.CNPJ;
+                nfs = await item.NOTAFISCAL.includes('/') ? 
+                item.NOTAFISCAL.split('/') :
+                [item.NOTAFISCAL];
                 
-                let date_not_formatted = (item[21].split(' '))[0];  // Formatando a data
+                let date_not_formatted = (item.DATA_EVENTO.split(' '))[0];  // Formatando a data
                 let date_fields = date_not_formatted.split('/');    // Formatando a data
                 date = `${ date_fields[0] }${ date_fields[1] }${ date_fields[2] }`; // Formatando a data
     
-                let hours_not_formatted = (item[21].split(' '))[1]; // Formatando a horas
+                let hours_not_formatted = (item.DATA_EVENTO.split(' '))[1]; // Formatando a horas
                 let hours_field = hours_not_formatted.split(':');   // Formatando a horas
                 hours = `${ hours_field[0] }${ hours_field[1] }`;   // Formatando a horas
     
-                DACTE = item[32].substring(26, 34);
+                DACTE = item.DACTE.substring(26, 34);
 
                 nfs.forEach( async (nf, index) => {    // Montar cada linha aqui dentro
                     digit_nf = (nf.split('-'))[1];

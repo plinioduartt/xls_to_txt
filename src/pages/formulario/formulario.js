@@ -23,44 +23,49 @@ export default class Formulario extends Component {
     };
 
     async upload(e) {
-        this.setState({ show_loader: true });
-
-        let name = e.target.files[0].name;
-
-        if (!name.includes('.xls') && !name.includes('.xlsx')) {
-            this.setState({ show_loader: false });
-            return alert('Formato incorreto, Tente um arquivo XLS ou XLSX');
-        } else {
-            await this.setState({ file: e.target.files[0], selected: true, show_button: false });
-
-            var dataParse;
-            var reader = new FileReader();
-            reader.onload = async (e) => {
-                var data = e.target.result;
-                let readedData = XLSX.read(data, {type: 'binary'});
-                const wsname = readedData.SheetNames[0];
-                const ws = readedData.Sheets[wsname];
+        if (e.target.files[0] !== undefined) {
+            this.setState({ show_loader: true });
         
-                /* Convert array to json*/
-                dataParse = XLSX.utils.sheet_to_json(ws, {header:1});
-                delete dataParse[0]; // Removendo os nomes das colunas
-                delete dataParse[dataParse.length-1];
-                delete dataParse[dataParse.length-2];
+            let name = e.target.files[0].name;
     
-                await dataParse.forEach( async (item, index) => {
-                    let line = await CREATE_LINE.create(item)
-                    string = `${ string }${ line }`;
-
-                    if (index === (dataParse.length - 3)) {
-                        await this.create_txt_file(string);
-                        setTimeout( async () => {
-                            this.setState({ show_loader: false, show_button: true });
-                        }, 3000);
-                    }
-                });
+            if (!name.includes('.xls') && !name.includes('.xlsx')) {
+                this.setState({ show_loader: false });
+                return alert('Formato incorreto, Tente um arquivo XLS ou XLSX');
+            } else {
+                await this.setState({ file: e.target.files[0], selected: true, show_button: false });
     
-            };
-            reader.readAsBinaryString(this.state.file)
+                var dataParse;
+                var reader = new FileReader();
+                reader.onload = async (e) => {
+                    var data = e.target.result;
+                    let readedData = XLSX.read(data, {type: 'binary'});
+                    const wsname = readedData.SheetNames[0];
+                    const ws = readedData.Sheets[wsname];
+            
+                    /* Convert array to json*/
+                    dataParse = XLSX.utils.sheet_to_json(ws, {header:0});
+                    // delete dataParse[0]; // Removendo os nomes das colunas
+                    // delete dataParse[dataParse.length-1];
+                    // delete dataParse[dataParse.length-2];
+                   
+                    // console.log(dataParse)
+    
+                    await dataParse.forEach( async (item, index) => {
+    
+                        let line = await CREATE_LINE.create(item)
+                        string = `${ string }${ line }`;
+    
+                        if (index === (dataParse.length - 3)) {
+                            await this.create_txt_file(string);
+                            setTimeout( async () => {
+                                this.setState({ show_loader: false, show_button: true });
+                            }, 3000);
+                        }
+                    });
+        
+                };
+                reader.readAsBinaryString(this.state.file)
+            }        
         }        
     }
 
@@ -80,7 +85,7 @@ export default class Formulario extends Component {
     
         setTimeout(() => {
             var link = document.getElementById('downloadlink');
-            text = text + '549                                                                                                                                                                                                                                                        \n';
+            text = text + '549                                                                                                                                                                                                                                                       \n';
             link.href = makeTextFile(text);
             link.style.display = 'block';
             string = '000JADLOG LOGISTICA S.A               ELSYS EQUIPAMENTOS ELETRONICOS LTDA0101190000OCO502000000                                                                                                                                                           \n';
