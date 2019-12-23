@@ -10,6 +10,9 @@
     "semantic-ui-react": "^0.88.1",
     "xlsx": "^0.15.1"
   },
+  "engines": {
+    "node": "12.13.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
