@@ -4,7 +4,7 @@
     31 é o índice do CNPJ da empresa,
     32 é o DACTE, A partir do 27º digito e contém 8 characteres
 */
-export default class CreateLine { 
+module.exports = { 
     async create(item) { 
         var nfs = [];
         var string = '';
