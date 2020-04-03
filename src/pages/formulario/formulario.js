@@ -100,7 +100,7 @@ export default class Formulario extends Component {
                 <p id="desenvolvido-por">Desenvolvido por</p>
                 <div id="avatar">
                     {/* <img alt="" src={ McLovin } /> */}
-                    <p>@mk3digital</p>
+                    <p>@MK3Digital</p>
                 </div>
 
                 <div className="App-header">
