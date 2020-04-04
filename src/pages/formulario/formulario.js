@@ -5,7 +5,7 @@ import McLovin from '../../assets/mclovin.jpg';
 
 import './formulario.css';
 import upload_image from './../../assets/upload.png';
-import CREATE_LINE from './CREATE_LINE';
+import { create_line } from './CREATE_LINE';
 
 var string =             '000JADLOG LOGISTICA S.A               ELSYS EQUIPAMENTOS ELETRONICOS LTDA0101190000OCO502000000                                                                                                                                                           \n';
 var second_line_string = '540OCORR502000000                                                                                                                                                                                                                                         \n';
@@ -52,7 +52,7 @@ export default class Formulario extends Component {
     
                     await dataParse.forEach( async (item, index) => {
     
-                        let line = await CREATE_LINE.create(item)
+                        let line = await create_line(item)
                         string = `${ string }${ line }`;
     
                         if (index === (dataParse.length - 3)) {
