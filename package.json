@@ -2,7 +2,7 @@
   "name": "csv_to_txt",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://expressoduarte.com.br/ocorren",
+  "homepage": ".",
   "dependencies": {
     "express": "^4.17.1",
     "history": "^4.10.1",

@@ -6,7 +6,7 @@ import history from '../services/history';
 
 export default function Routes() {
     return (
-        <Router basename="/ocorren" history={history}>
+        <Router basename="/" history={history}>
             <Switch>
                 <Route path={`${process.env.PUBLIC_URL}/`} exact component={ Home } />
             </Switch>
