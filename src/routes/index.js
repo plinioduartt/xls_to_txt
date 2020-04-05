@@ -6,9 +6,9 @@ import history from '../services/history';
 
 export default function Routes() {
     return (
-        <Router basename="/" history={history}>
+        <Router history={history}>
             <Switch>
-                <Route path={`${process.env.PUBLIC_URL}/`} exact component={ Home } />
+                <Route path={`/`} exact component={ Home } />
             </Switch>
         </Router>        
     )
