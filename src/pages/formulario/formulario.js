@@ -48,19 +48,23 @@ export default class Formulario extends Component {
                     // delete dataParse[dataParse.length-1];
                     // delete dataParse[dataParse.length-2];
                    
-                    // console.log(dataParse)
-    
+                    var timeout;
                     await dataParse.forEach( async (item, index) => {
-    
+                        clearTimeout(timeout);
+
                         let line = await create_line(item)
                         string = `${ string }${ line }`;
-    
-                        if (index === (dataParse.length - 3)) {
-                            await this.create_txt_file(string);
-                            setTimeout( async () => {
-                                this.setState({ show_loader: false, show_button: true });
-                            }, 3000);
-                        }
+                    
+                        timeout = setTimeout( async () => {
+                            // if (index === (dataParse.length - 3)) {
+                                // console.log('STRING', string);
+
+                                await this.create_txt_file(string);
+                                setTimeout( async () => {
+                                    this.setState({ show_loader: false, show_button: true });
+                                }, 3000);
+                            // }
+                        }, 2000);                       
                     });
         
                 };
@@ -91,7 +95,6 @@ export default class Formulario extends Component {
             string = '000JADLOG LOGISTICA S.A               ELSYS EQUIPAMENTOS ELETRONICOS LTDA0101190000OCO502000000                                                                                                                                                           \n';
             string = `${ string }${ second_line_string }${ thirdy_line_string }`;
         }, 3000);
-      
     }
 
     render() {

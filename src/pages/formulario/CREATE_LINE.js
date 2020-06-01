@@ -42,14 +42,15 @@ export const create_line = async (item) => {
                 digit_nf = (nf.split('-'))[1];
                 nf_without_digit = (nf.split('-'))[0];
 
-                new Promise( async (resolve) => {
+                new Promise( async (resolve2) => {
 
                     string = string + `${ initial_code }${ cnpj }${ digit_nf }  0000${ nf_without_digit }${ statuses()[item.STATUS] }${ date }${ hours }00                                                                                00000000010    ${ DACTE }                                                                                                     \n`;
-                    resolve(string);
+                    resolve2(string);
 
                 }).then( async (res) => {
 
                     if (index === (nfs.length - 1)) {
+                        // console.log(index, (nfs.length - 1), res)
                         await resolve(res);
                     }
 
