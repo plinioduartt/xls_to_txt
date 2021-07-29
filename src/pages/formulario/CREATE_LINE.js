@@ -55,7 +55,6 @@ export const create_line = async (item) => {
                 string = string + `${initial_code}${cnpj.replace('.', '').replace('.', '').replace('/', '').replace('-', '')}${digit_nf}  ${nf_number_without_digit}${item_status}${date}${hours}00${free_text_space}00000000010    ${DACTE}${last_string}\n`
 
                 if (index === (nfs.length - 1)) {
-                    // console.log(index, (nfs.length - 1), res)
                     resolve(string);
                 }
             });
