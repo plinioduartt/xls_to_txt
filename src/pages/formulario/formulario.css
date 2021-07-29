@@ -14,25 +14,27 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: #333;
 }
 
 .App-link {
-    color: #09d3ac;
+    color: #a30718;
+    font-weight: 500;
 }
 
 
 a#downloadlink {
-    background: #09d3ac;
-    padding: 20px;
-    border-radius: 15px;
+    background: #a30718;
+    padding: 10px;
+    border-radius: 5px;
     text-decoration: none;
     color: #fff;
-    position: absolute;
-    margin-top: 175px;
+    margin-top: 25px;
     width: 150px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-    border: none;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+    border: 1px solid #a30718;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
 a#downloadlink.active {
@@ -47,8 +49,8 @@ a#downloadlink.disabled {
 
 a#downloadlink:hover {
     background: #fff;
-    color: #09d3ac;
-    border: none;
+    color: #a30718;
+    border: 1px solid #a30718;
 }
 
 input.upload-file {
@@ -60,10 +62,20 @@ input.upload-file {
 
 label.custom-file-upload {
     display: flex;
-    border: 1px solid #eee;
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 17px;
     cursor: pointer;
+    background: #fff;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 15%);
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    transition: 0.3s;
+}
+
+label.custom-file-upload:hover {
+    background: #fff;
+    border: 1px solid #a30718;
 }
 
 label.custom-file-upload img {
@@ -107,7 +119,12 @@ div#avatar p {
 p#desenvolvido-por {
     position: absolute;
     right: 30px;
-    color: #09d3ac;
+    color: #333;
     font-size: 12px;
     top: 31px;
+}
+
+svg.upload-icon {
+    margin-right: 10px;
+    color: #a30718;
 }
